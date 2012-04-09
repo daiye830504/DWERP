@@ -1,0 +1,36 @@
+<form id="pagerForm" action="__URL__" method="post">
+	<input type="hidden" name="pageNum" value="1"/>
+</form>
+
+<div class="page">
+	<div class="pageContent">
+		<table class="list" width="100%" layoutH="26">
+			<thead>
+			<tr>
+				<th width="60">编号</th>
+				<th>重写URL</th>
+				<th>原始URL</th>
+			</tr>
+			</thead>
+			<tbody>
+			<volist id="vo" name="list">
+				<tr target="sid_category" rel="{$vo['id']}">
+					<td>{$vo['id']}</td>
+					<td>{$vo['rewrite']}</td>
+					<td>{$vo['url']}</td>
+				</tr>
+			</volist>
+			</tbody>
+		</table>
+
+		<div class="panelBar">
+			<div class="pages">
+				<span>共{$totalCount}条</span>
+			</div>
+			<div class="pagination" targetType="navTab" totalCount="{$totalCount}" numPerPage="{$numPerPage}" pageNumShown="10" currentPage="{$currentPage}"></div>
+		</div>
+
+	</div>
+	
+</div>
+

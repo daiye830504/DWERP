@@ -1,0 +1,5 @@
+/**
+* @author :xp_zhu@qq.com
+*/
+1、将 dwz.min.js 文件中 897 行 
+$("#sidebar, #sidebar_s .collapse, #splitBar, #splitBarProxy").height(iContentH-5)后追加修正：$("#sidebar_s .collapse").height(iContentH-7);

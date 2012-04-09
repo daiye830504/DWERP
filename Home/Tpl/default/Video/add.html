@@ -1,0 +1,82 @@
+<div class="page">
+	<div class="pageContent">
+	
+	<form method="post" action="__URL__/insert/navTabId/__MODULE__" class="pageForm required-validate" enctype="multipart/form-data" onsubmit="return iframeCallback(this, dialogAjaxDone)">
+		<input type="hidden" name="adder_id" value="<?php echo $_SESSION[C('USER_AUTH_KEY')] ?>"/>
+		<input type="hidden" name="add_time" value="<?php echo time()?>"/>
+		<div class="pageFormContent" layoutH="58">
+
+			<div class="unit">
+				<label>视频标题：</label>
+				<input type="text" class="required"   name="title">
+			</div>			
+			<div class="unit">
+				<label>关键字：</label>
+				<input type="text" size="60" name="keywords">
+			</div>			
+			<div class="unit">
+				<label>描述：</label>
+				<input type="text" size="60" name="description">
+			</div>
+			<div class="unit">
+				<label>URL重写：</label>
+				<input type="text" size="60" name="rewrite">
+			</div>
+			<div class="unit">
+				<label>使用模板：</label>
+				<input type="text" size="60" name="template">
+			</div>				
+			<div class="unit">
+				<label>预览图片：</label>
+				<input type="file" name="img"  class="required">
+			</div>			
+			<div class="unit">
+				<label>所属分类：</label>
+				<SELECT name="tid">
+					<volist name="list" id="vo">
+						<option value="{$vo.id}">{$vo.title}</option>
+					</volist>
+				</SELECT>
+			</div>
+			<div class="unit">
+				<label>排序值：</label>
+				<input type="text" name="sort" size="30"/>
+			</div>			
+			<div class="unit">
+				<label>状态：</label>
+				<select name="status">
+					<option value="1">启用</option>
+					<option value="0">禁用</option>
+				</select>
+			</div>			
+			<div class="unit">
+				<label>链接地址：</label>
+				<textarea name="url" rows="3" cols="57" class="required" id="url"></textarea>
+			</div>
+			<div class="unit">
+				<label>文件选择：</label>
+				<volist name="files" id="vo">
+					<span class="video" value="{$vo}">{$vo}</span>
+				</volist>
+			</div>	
+			
+		</div>
+		<div class="formBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">提交</button></div></div></li>
+				<li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
+			</ul>
+		</div>
+	</form>
+	
+	</div>
+</div>
+<script>
+$(document).ready(function(){
+	$('.video').click(function(){
+		$('#url').val($(this).attr('value'));
+	});	
+});
+</script>
+
+

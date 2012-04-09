@@ -1,0 +1,55 @@
+<?php include tpl("header");?>
+<div class="cbody b-box blank10">
+	<ul class="sidebar f_l">
+		<li class="home-link"><?php echo $lang['install_step_wizard']; ?></li>
+		<li><?php echo $lang['install_step_notes']; ?></li>
+		<li><?php echo $lang['install_step_license']; ?></li>
+		<li><?php echo $lang['install_step_os']; ?></li>
+		<li><?php echo $lang['install_step_option']; ?></li>
+		<li class="step-link"><?php echo $lang['install_step_config']; ?></li>
+		<li><?php echo $lang['install_step_import']; ?></li>
+		<li><?php echo $lang['install_step_finish']; ?></li>
+	</ul>
+	<div class="b-area-w f_r">
+		<h4>DWERP <?php echo $_LCVERSION, ' ', $lang['install_wizard']; ?></h4>
+		<table border="0" cellspacing="1" class="tb-b">
+			<tr>
+				<th colspan="2"><?php echo $lang['founder']; ?></th>
+			</tr>
+			<tr>
+				<td width="100"><?php echo $lang['install_founder_name'] ?></td>
+				<td><?php echo $data['founder_name'] ?></td>
+			</tr>
+			<tr>
+				<td><?php echo $lang['install_founder_password'] ?></td>
+				<td><?php echo $data['password'] ?></td>
+			</tr>
+			<tr>
+				<td><?php echo $lang['icp_num'] ?></td>
+				<td><?php echo $data['icp_num'] ?></td>
+			</tr>
+		</table>
+		<table border="0" cellspacing="1" class="tb-b blank5">
+			<tr>
+				<th><?php echo $lang['install_setting']; ?></th>
+			</tr>
+			<tr>
+				<td>
+					<?php 
+						if($result_1 && file_exists(DWERP_ROOT.$thinksns_config_file)){
+							echo $lang['config_log_success'];
+						}else{
+							echo $lang['config_read_failed']; $quit = TRUE;
+						}
+					?>
+				</td>
+			</tr>
+		</table>
+		<div align="center">
+			<input type="button" value="<?php echo $lang['install_btn_prev']; ?>" onclick="window.location.href='index.php?step=3'" class="input-btn-b" />
+			<input type="button" value="<?php echo $lang['install_btn_next']; ?>" onclick="window.location.href='index.php?step=5'" class="input-btn-b" <?php echo $allownext,$alert; ?> />
+		</div>
+	</div>
+	<div class="clear"></div>
+</div>
+<?php include tpl("footer");?>

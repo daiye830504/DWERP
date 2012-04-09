@@ -1,0 +1,49 @@
+<form id="pagerForm" action="__URL__" method="post">
+	<input type="hidden" name="pageNum" value="1"/>
+</form>
+
+<div class="page">
+	<div class="pageContent">
+		<div class="panelBar">
+			<ul class="toolBar">
+				<li><a class="edit" href="__URL__/index/root/1" target="navTab" rel="__MODULE__" title="文件列表"><span>返回根目录</span></a></li>
+				<li><a class="delete" href="__URL__/index/up/1" target="navTab" rel="__MODULE__" title="文件列表"><span>上层目录</span></a></li>
+				<li><a class="add" href="__URL__/upload/" target="dialog" height="150"><span>上传到当前目录</span></a></li>
+			</ul>
+		</div>
+		<table class="table" width="100%" layoutH="48">
+			<thead>
+			<tr>
+				<th width="300">文件名</th>
+				<th width="100">文件大小</th>
+				<th width="160">最后修改时间</th>
+				<th>操作</th>
+			</tr>
+			</thead>
+			<tbody>
+			<volist id="vo" name="list">
+				<tr target="sid_node" rel="{$vo['id']}">
+					<td>
+						<eq name="vo.type" value="dir">
+						<a href="__URL__/index/path/{$vo['filename']}/" target="navTab" rel="__MODULE__">{$vo['fileimg']} {$vo['filename']}</a>
+						<else/>
+						{$vo['fileimg']} {$vo['filename']}
+						</eq>
+					</td>
+					<td><php>echo number_format($vo['size']/1024,2);</php> KB</td>
+					<td>{$vo['ctime']|date='Y-m-d H:i:s',###}</td>
+					<td>
+						<a href="__URL__/rename/filename/{$vo['filename']}" target="dialog" width="400" height="180">【重命名】</a>
+						<a href="__URL__/foreverdelete/filename/{$vo['filename']}/filetype/{$vo['type']}" target="navTabTodo" calback="navTabAjaxMenu" title="你确定要删除吗？" warn="请选择一条记录">【删除】</a>
+						<a href="__URL__/move/filename/{$vo['filename']}" target="dialog" width="560" height="180">【移动】</a>
+						<in name="vo.ext" value="htm,html,php,css,xml,txt,js">
+						<a href="__URL__/edit/filename/{$vo['filename']}" target="navTab" width="560">【编辑】</a>
+						</in>						
+					</td>
+				</tr>
+			</volist>
+			</tbody>
+		</table>
+		
+	</div>
+</div>

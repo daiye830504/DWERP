@@ -1,0 +1,33 @@
+<?php include tpl("header");?>
+<div class="cbody b-box blank10">
+	<ul class="sidebar f_l">
+		<li class="home-link"><?php echo $lang['install_step_wizard']; ?></li>
+		<li class="step-link"><?php echo $lang['install_step_notes']; ?></li>
+		<li><?php echo $lang['install_step_license']; ?></li>
+		<li><?php echo $lang['install_step_os']; ?></li>
+		<li><?php echo $lang['install_step_option']; ?></li>
+		<li><?php echo $lang['install_step_config']; ?></li>
+		<li><?php echo $lang['install_step_import']; ?></li>
+		<li><?php echo $lang['install_step_finish']; ?></li>
+	</ul>
+	<div class="b-area-w f_r">
+		<h4>DWERP <?php echo $_LCVERSION, ' ', $lang['install_wizard']; ?></h4>
+		<table border="0" cellspacing="1" class="tb-b">
+			<tr>
+				<th><?php echo $lang['install_tips'];?></th>
+			</tr>
+			<tr>
+				<td><?php echo $lang['install_tips_content'];?></td>
+			</tr>
+			<tr>
+				<th><?php echo $lang['install_notes']; ?></th>
+			</tr>
+			<tr>
+				<td><?php echo $lang['install_notes_content']; ?></td>
+			</tr>
+		</table>
+		<div align="center"><input type="button" value="<?php echo $lang['install_btn_start']; ?>" onclick="window.location.href='index.php?step=1'" class="input-btn-b" /></div>
+	</div>
+	<div class="clear"></div>
+</div>
+<?php include tpl("footer");?>

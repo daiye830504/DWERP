@@ -1,0 +1,69 @@
+<div class="page">
+	<div class="pageContent">
+
+	<form method="post" action="__URL__/update/navTabId/__MODULE__" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone)">
+		<input type="hidden" name="id" value="{$vo.id}" />
+		<div class="pageFormContent" layoutH="58">
+
+		<div class="unit">
+			<label>分类名：</label>
+			<input type="text" class="required"   name="title" value="{$vo.title}">
+		</div>		
+		<div class="unit">
+			<label>所属父类：</label>
+			<select name="pid">
+				<option value="0">顶级分类</option>
+					<volist name="list" id="category">
+					<neq name="category.id" value="$vo.id">
+					<option value="{$category.id}" <eq name="category.id" value="$vo.pid">selected</eq>>{$category.title}</option>
+					</neq>
+					</volist>
+			</select>
+		</div>		
+		<div class="unit">
+			<label>所属模块：</label>
+			<SELECT name="module">
+				<volist name="module" id="vl">
+					<option value="{$key}" <eq name="key" value="$vo.module">selected</eq>>{$vl}</option>
+				</volist>
+			</SELECT>
+		</div>			
+		<div class="unit">
+			<label>排序值：</label>
+			<input type="text" name="sort" size="20" maxlength="30" value="{$vo.sort}"/>
+		</div>			
+		<div class="unit">
+			<label>状态：</label>
+			<select class="small bLeft"  name="status">
+				<option <eq name="vo.status" value="1" >selected</eq> value="1">启用</option>
+				<option <eq name="vo.status" value="0" >selected</eq> value="0">禁用</option>
+			</select>
+		</div>
+		<div class="unit">
+			<label>URL重写值：</label>
+			<input type="text" name="rewrite" size="20" value="{$vo.rewrite}"/>
+		</div>
+		<div class="unit">
+			<label>使用模板：</label>
+			<input type="text" name="template" size="20" value="{$vo.template}"/>
+		</div>		
+		<div class="unit">
+			<label>关键字：</label>
+			<input type="text" size="60" name="keywords" value="{$vo.keywords}">
+		</div>		
+		<div class="unit">
+			<label>描述：</label>
+			<textarea name="description"  rows="3" cols="57">{$vo.description}</textarea>
+		</div>
+		
+		</div>
+		<div class="formBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">提交</button></div></div></li>
+				<li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
+			</ul>
+		</div>
+	</form>
+	
+	</div>
+</div>

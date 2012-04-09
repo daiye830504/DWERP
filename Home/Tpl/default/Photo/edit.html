@@ -1,0 +1,56 @@
+<div class="page">
+	<div class="pageContent">
+
+	<form method="post" action="__URL__/update/navTabId/__MODULE__" class="pageForm required-validate"  enctype="multipart/form-data" onsubmit="return validateCallback(this, dialogAjaxDone)">
+		<input type="hidden" name="id" value="{$vo.id}" />
+		<div class="pageFormContent" layoutH="58">
+
+		<div class="unit">
+			<label>图片名称：</label>
+			<input type="text" class="required"   name="title" value="{$vo.title}">
+		</div>		
+		<div class="unit">
+			<label>所属分类：</label>
+			<select name="tid">
+				<volist name="list" id="category">
+				<option value="{$category.id}" <eq name="category.id" value="$vo.tid">selected</eq>>{$category.title}</option>
+				</volist>
+			</select>
+		</div>		
+		<div class="unit">
+			<label>图片简介：</label>
+			<input type="text" name="intro" size="60" value="{$vo.intro}"/>
+		</div>
+		<div class="unit">
+			<label>排序值：</label>
+			<input type="text" name="sort" size="20" value="{$vo.sort}"/>
+		</div>
+		<div class="unit">
+			<label>状态：</label>
+			<select class="small bLeft"  name="status">
+				<option <eq name="vo.status" value="1" >selected</eq> value="1">启用</option>
+				<option <eq name="vo.status" value="0" >selected</eq> value="0">禁用</option>
+			</select>
+		</div>
+		<div class="unit">
+			<label>图片预览：</label>
+			<notempty name="vo.img">
+				<img src="__PUBLIC__/Upload/photo/thumb_{$vo.img}" />
+			</notempty>
+		</div>
+		<div class="unit">
+			<label>链接地址：</label>
+			<textarea name="link" rows="3" cols="57">{$vo.link}</textarea>
+		</div>
+				
+		</div>
+		<div class="formBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">提交</button></div></div></li>
+				<li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
+			</ul>
+		</div>
+	</form>
+	
+	</div>
+</div>

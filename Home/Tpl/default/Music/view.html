@@ -1,0 +1,24 @@
+<script language="javascript">
+var ROOT='__ROOT__'; 
+</script>
+<script type="text/javascript" src="__PUBLIC__/Plugin/Jplayer/mplayer.js"></script><!--音乐播放JS-->	
+<link rel="stylesheet" type="text/css" media="screen" href="__PUBLIC__/Plugin/Jplayer/mplayer.css"/><!--音乐播放CSS--> 
+
+<div class="page">
+	<div class="pageContent">
+	<div style="height:30px">
+	    <div id="jquery_jplayer"></div> 
+	    <div id="playlist_list"> 
+	      <ul class="playlist_content" > 
+	          <li class="player" jplayer="{$info.url}" songer="{$info.author}" ablum="{$info.title}" songimg="">		
+	              <a href="#" class="controllink" ></a>
+	              <p>{$info.title}</p>
+	              <span style=" position:absolute; left:350px; top:5px">{$info.author}</span>
+	              <span style=" position:absolute; left:450px; top:5px">{$info.tid|getCategoryName}</span>
+	              <span style=" position:absolute; left:550px; top:5px">{$info.adder_id|getUserName}</span>
+	          </li>
+	      </ul>
+	    </div> 
+	    </div>
+	</div>
+</div>

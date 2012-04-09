@@ -1,0 +1,81 @@
+<form id="pagerForm" action="__URL__" method="post">
+	<input type="hidden" name="pageNum" value="2"/>
+	<input type="hidden" name="content" value="{$_REQUEST.content}"/>
+	<input type="hidden" name="pid" value="{$_REQUEST.pid}"/>
+	<input type="hidden" name="aid" value="{$_REQUEST.aid}"/>
+</form>
+
+<div class="page">
+	<div class="pageHeader">
+		<form onsubmit="return navTabSearch(this);" action="__URL__" method="post">
+		<input type="hidden" name="pageNum" value="1"/>
+		<div class="searchBar">
+			<ul class="searchContent">
+				<li>
+					<label>内容：</label>
+					<input type="text" name="content" value="{$_REQUEST.content}"/>
+				</li>
+				<li>
+					<label>父信息ID：</label>
+					<input type="text" name="pid" value="{$_REQUEST.pid}"/>
+				</li>
+				<li>
+					<label>文章ID：</label>
+					<input type="text" name="aid" value="{$_REQUEST.aid}"/>
+				</li>
+			</ul>
+			<div class="subBar">
+				<ul>
+					<li><div class="buttonActive"><div class="buttonContent"><button type="submit">查询</button></div></div></li>
+				</ul>
+			</div>
+		</div>
+		</form>
+	</div>
+	<div class="pageContent">
+		<div class="panelBar">
+			<ul class="toolBar">
+				<li><a class="delete" href="__URL__/foreverdelete/id/{sid_message}/navTabId/__MODULE__" target="navTabTodo" title="你确定要删除吗？" warn="请选择一条记录"><span>删除</span></a></li>
+			</ul>
+		</div>
+		<table class="table" width="100%" layoutH="136">
+			<thead>
+			<tr>
+				<th width="60">编号</th>
+				<th width="80">父信息ID</th>
+				<th width="60">文章ID</th>
+				<th>内容</th>
+				<th width="100">发表人昵称</th>
+				<th width="100">Email</th>
+				<th width="100">发表时间</th>
+				<th width="80">状态</th>
+				<th width="80">操作</th>
+			</tr>
+			</thead>
+			<tbody>
+			<volist id="vo" name="list">
+				<tr target="sid_message" rel="{$vo['id']}">
+					<td>{$vo['id']}</td>
+					<td>{$vo['pid']}</td>
+					<td>{$vo['aid']}</td>
+					<td title="{$vo['content']}">{$vo['content']}</td>
+					<td>{$vo['adder_name']}</td>
+					<td>{$vo['adder_email']}</td>
+					<td>{$vo['add_time']|date='Y-m-d',###}</td>
+					<td>{$vo['status']|getStatus}</td>
+					<td>{$vo['status']|showStatus=$vo['id']} <eq name="vo.pid" value="0"> | <a class="add" href="__URL__/reply/id/{$vo.id}" target="dialog" width="590" height="180" mask="true"><span>回复</span></a></eq></td>					
+				</tr>
+			</volist>
+			</tbody>
+		</table>
+		<div class="panelBar">
+			<div class="pages">
+				<span>共{$totalCount}条</span>
+			</div>
+			<div class="pagination" targetType="navTab" totalCount="{$totalCount}" numPerPage="{$numPerPage}" pageNumShown="10" currentPage="{$currentPage}"></div>
+		</div>
+
+	</div>
+	
+</div>
+

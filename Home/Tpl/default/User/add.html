@@ -1,0 +1,56 @@
+
+<script language="JavaScript">
+
+function checkName(){
+	ThinkAjax.send('__URL__/checkAccount/','ajax=1&user_id='+$F('user_id'));
+}
+
+</script>
+
+<div class="page">
+	<div class="pageContent">
+	
+	<form method="post" action="__URL__/insert/navTabId/__MODULE__" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone)">
+		<input type="hidden" name="user_id" value="<?php echo $_SESSION[C('USER_AUTH_KEY')] ?>"/> 
+		<div class="pageFormContent" layoutH="58">
+
+			<div class="unit">
+				<label>用户登录名：</label>
+				<input type="text" class="required alphanumeric" size="30" maxlength="20" name="user_id"/>
+			</div>
+			<div class="unit">
+				<label>用户姓名：</label>
+				<input type="text" class="required" size="30" maxlength="20" name="user_name" />
+			</div>
+			<div class="unit">
+				<label>密码：</label>
+				<input type="text" name="user_pwd" size="30" maxlength="20" class="required alphanumeric"/>
+			</div>
+			<div class="unit">
+				<label>状态：</label>
+				<select name="status">
+					<option value="1">启用</option>
+					<option value="0">禁用</option>
+				</select>
+			</div>
+			
+			<div class="unit">
+				<label>角色：</label>
+				<select name="role_id">
+					<option value="2">老板</option>
+					<option value="3">业务员</option>
+					<option value="4">工人</option>
+				</select>
+			</div>
+			
+		</div>
+		<div class="formBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">提交</button></div></div></li>
+				<li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
+			</ul>
+		</div>
+	</form>
+	
+	</div>
+</div>

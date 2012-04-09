@@ -1,0 +1,90 @@
+<?php include tpl("header");?>
+<div class="cbody b-box blank10">
+	<ul class="sidebar f_l">
+		<li class="home-link"><?php echo $lang['install_step_wizard']; ?></li>
+		<li><?php echo $lang['install_step_notes']; ?></li>
+		<li><?php echo $lang['install_step_license']; ?></li>
+		<li><?php echo $lang['install_step_os']; ?></li>
+		<li><?php echo $lang['install_step_option']; ?></li>
+		<li><?php echo $lang['install_step_config']; ?></li>
+		<li><?php echo $lang['install_step_import']; ?></li>
+		<li class="step-link"><?php echo $lang['install_step_finish']; ?></li>
+	</ul>
+	<div class="b-area-w f_r">
+		<h4>DWERP <?php echo $_LCVERSION, ' ', $lang['install_wizard']; ?></h4>
+		<table border="0" cellspacing="1" class="tb-b">
+			<tr>
+				<th><?php echo $lang['import_processing']; ?></th>
+			</tr>
+			<tr>
+				<td>
+				<div class="import-echo">
+					<?php foreach($ret as $query){
+						$query = trim($query);
+						if($query){
+							if(substr($query, 0, 12) == 'CREATE TABLE'){
+								$name = preg_replace("/CREATE TABLE `([a-z0-9_]+)` .*/is", "\\1", $query);
+								echo $lang['create_table'].' '.$name.' ... <span class="blue">OK</span><br />';
+								@mysql_query(createtable($query, $db_charset));
+								$tablenum ++;
+							}else{
+								@mysql_query($query);
+							}
+						}
+					}?>
+				</div>
+				</td>
+			</tr>
+		</table>
+		<table border="0" cellspacing="1" class="tb-b blank5">
+			<tr>
+				<th><?php echo $lang['create_founder']; ?></th>
+			</tr>
+			<tr>
+				<td>
+					<?php
+						$siteFounder = $_SESSION['default_manager_account'];
+						$sql1 = "INSERT INTO `user` (`user_id`, `role_id`, `user_pwd`, `user_name`, `status`) VALUES ('".$siteFounder['founder_name']."', '1', '".$siteFounder['password']."', '管理员', '1')";
+                        if(mysql_query($sql1)){
+							echo $lang['create_founder_success'].'... <span class="blue">OK</span>';
+						}else{
+							echo $lang['create_founder_error'].'... <span class="red">ERROR</span>';
+							$quit = true;
+						}
+					?>
+				</td>
+			</tr>
+		</table>
+		<?php
+			if(!$quit){
+				fopen(DWERP_ROOT.'/Install/install.lock', 'w');
+				clear();
+		?>
+			<table border="0" cellspacing="1" class="tb-b blank5">
+				<tr>
+					<th><?php echo $lang['install_success']; ?></th>
+				</tr>
+				<tr>
+					<td><?php echo $lang['install_success_intro']; ?></td>
+				</tr>
+			</table>
+			<div align="center">
+				<input type="button" value="<?php echo $lang['go_home']; ?>" onclick="window.location.href='../index.php'" class="input-btn-b" />
+				<input type="button" value="<?php echo $lang['go_admin']; ?>" onclick="window.location.href='../admin.php'" class="input-btn-b" />
+			</div>
+		<?php 		
+			}else{
+		?>
+			<table border="0" cellspacing="1" class="tb-b blank5">
+				<tr>
+					<th><?php echo $lang['install_failure']; ?></th>
+				</tr>
+				<tr>
+					<td><?php echo $lang['reinstall']; ?></td>
+				</tr>
+			</table>
+		<?php } ?>
+	</div>
+	<div class="clear"></div>
+</div>
+<?php include tpl("footer");?>

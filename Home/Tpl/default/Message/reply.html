@@ -1,0 +1,26 @@
+<div class="page">
+	<div class="pageContent">
+	
+	<form method="post" action="__URL__/insert/navTabId/__MODULE__" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone)">
+		<input type="hidden" name="adder_id" value="<?php echo $_SESSION[C('USER_AUTH_KEY')] ?>"/> 
+		<input type="hidden" name="add_time" value="<?php echo time() ?>" />
+		<input type="hidden" name="status" value="1"/>
+		<input type="hidden" name="pid" value="{$_REQUEST.id}"/>
+		<div class="pageFormContent" layoutH="58">
+
+			<div class="unit">
+				<label>内容：</label>
+				<textarea name="content" rows="3" cols="57"></textarea>
+			</div>
+			
+		</div>
+		<div class="formBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">提交</button></div></div></li>
+				<li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
+			</ul>
+		</div>
+	</form>
+	
+	</div>
+</div>

@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>DWERP 前台登录窗口</title>
+<script language="JavaScript">
+function keydown(e){
+	var e = e || event;
+	if (e.keyCode==13)
+	{
+		document.login.submit();
+	}
+}
+</script>
+<style type="text/css">
+html {height:100%;}
+* {margin:0;padding:0;border:0;}
+body {background:#c4e5f8;font-size:12px;font-family:"微软雅黑", Arial, Helvetica, sans-serif;color:#000;}
+.cl {display: block;height: 0;font-size: 0;line-height: 0;text-indent: -5000px;clear: both;}
+a {color:#fff;text-decoration:none;}
+a:hover {color:#fff;text-decoration:none;}
+#login {width:100%;height:463px;position:absolute;top:50%;margin-top:-231px;background: url(__PUBLIC__/Theme/Admin/Dwz/themes/default/images/login/body_bg.gif) center 0 no-repeat;}
+#content {width:861px;height:100%;margin:0 auto;position:relative;}
+.cnt_pan {padding-top:70px;}
+.cnt {width:861px;height:322px;}
+.bg01 {width:861px;height:95px;background:url(__PUBLIC__/Theme/Admin/Dwz/themes/default/images/login/bg_01.png) 0 0 no-repeat;}
+.bg02 {width:861px;height:55px;background:url(__PUBLIC__/Theme/Admin/Dwz/themes/default/images/login/bg_02.png) 0 0 no-repeat;}
+.bg03 {width:861px;height:60px;background:url(__PUBLIC__/Theme/Admin/Dwz/themes/default/images/login/bg_03.png) 0 0 no-repeat;}
+.bg04 {width:861px;height:112px;background:url(__PUBLIC__/Theme/Admin/Dwz/themes/default/images/login/bg_04.png) 0 0 no-repeat;}
+.container {width:861px;height:322px;position: absolute;margin-top:-322px;}
+.container .copyright {float:left;display:inline;width:567px;height:322px;}
+.container .copyright p {color:#fff;padding-top:251px;padding-left:22px;}
+.container .main {float:right;display:inline;width:294px;height:322px;}
+.main .main_pan {padding:30px 0 0 30px;}
+.main .imges {width:84px;height:15px;}
+.main .msg {width:185px;height:28px;margin-top:10px;color:#cf0000;overflow:hidden;}
+.main .ipt {padding-top:2px;}
+.main .ipt ul {}
+.main .ipt ul li {list-style-type:none;height:32px;}
+.main .ipt ul li .text {height:20px;}
+.main .ipt ul li .code {position:absolute;top:148px;cursor:pointer;}
+.main .wth1 {width:123px;height:20px;line-height:20px;padding-left:2px;background:url(__PUBLIC__/Theme/Admin/Dwz/themes/default/images/login/input_01.gif) 0 0 no-repeat;}
+.main .wth2 {width:59px;height:20px;line-height:20px;padding-left:2px;background:url(__PUBLIC__/Theme/Admin/Dwz/themes/default/images/login/input_02.gif) 0 0 no-repeat;}
+.main .multi {padding-left:60px;padding-top:5px;}
+.main .multi .dx {}
+.main .multi span {color:#000;}
+.main .but {padding:26px 0 0 28px;}
+.main .but span {float:left;display:block;width:70px;height:27px;line-height:27px;text-align:center;background:url(__PUBLIC__/Theme/Admin/Dwz/themes/default/images/login/btn_bg.gif) 0 0 no-repeat;margin-right:10px;}
+.main .but span input {float:left;display:block;width:70px;height:27px;background:none}
+</style>
+<!--[if IE 6]>
+<style type="text/css">
+#content .bg01{ background-image: none; filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='__PUBLIC__/Theme/Admin/Dwz/themes/default/images/login/bg_01.png', sizingMethod='image'); }
+#content .bg04{ background-image: none; filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='__PUBLIC__/Theme/Admin/Dwz/themes/default/images/login/bg_04.png', sizingMethod='image'); }
+</style>
+<![endif]-->
+</head>
+<body>
+<form method='post' name="login" id="loginform" action="__URL__/checkLogin/" >
+<div id="login">
+  <div id="content">
+    <div  class="cnt_pan">
+      <div class="cnt">
+        <div class="bg01"></div>
+        <div class="bg02"></div>
+        <div class="bg03"></div>
+        <div class="bg04"></div>
+        <div class="container">
+          <div class="copyright">
+            <p>版权所有(C) XPCMS V2.0 ALL RIGHTS RESERVED</p>
+          </div>
+          <div class="main">
+            <div class="main_pan">
+              <div class="imges"><img src="__PUBLIC__/Theme/Admin/Dwz/themes/default/images/login/login.gif" alt="登录" title="登录" /></div>
+              <p class="msg"></p>
+              <div class="ipt">
+                <ul style="padding-left:15px;">
+                  <li><span class="text">用户名:</span>
+                    <input type="text" class="wth1" name="user_id" />
+                  </li>
+                  <li><span class="text">密&nbsp;&nbsp;&nbsp;码:</span>
+                    <input type="password" class="wth1" name="user_pwd" />
+                  </li>
+                  <li><span class="text">验证码:</span>
+                    <input type="text" maxlength="4" class="wth2" onkeydown="keydown(event)" name="verify" />
+                    <span><img class="code" id="verifyImg" src="__URL__/verify/" onclick="this.src+='?' + Math.random();" alt="点击刷新验证码" /></span>
+                  </li>
+                </ul>
+                <div class="but"><span><input type="submit" value="登录"/></span><span><input type="reset" value="重置" /></span></div>
+              </div>
+            </div>
+          </div>
+          <div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</form>
+</body>
+</html>

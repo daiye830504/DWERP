@@ -1,0 +1,72 @@
+<div class="page">
+	<div class="pageContent">
+	
+	<form method="post" action="__URL__/update/navTabId/__MODULE__" class="pageForm required-validate" enctype="multipart/form-data" onsubmit="return iframeCallback(this,navTabAjaxDone);">
+		<input type="hidden" name="id" value="{$vo.id}" />
+		<input type="hidden" name="update_time" value="<?php echo time() ?>"/>
+		<div class="pageFormContent" layoutH="58">
+
+			<div class="unit">
+				<label>标题：</label>
+				<input type="text" class="required" size="60" name="title" value="{$vo.title}"/>
+			</div>
+			<div class="unit">
+				<label>所属父类：</label>
+				<SELECT name="tid">
+					<volist name="list" id="category">
+						<option value="{$category.id}" <eq name="category.id" value="$vo.tid">selected</eq>>{$category.title}</option>
+					</volist>
+				</SELECT>
+			</div>
+			<div class="unit">
+				<label>关键字：</label>
+				<input type="text" name="keywords" size="60" value="{$vo.keywords}"/>
+			</div>
+			<div class="unit">
+				<label>描述：</label>
+				<input type="text" name="description" size="60" value="{$vo.description}"/>
+			</div>
+			<div class="unit">
+				<label>预览图片：</label>
+				<notempty name="vo.img">
+				<img src="__PUBLIC__/Upload/article/{$vo.img}" />
+				<a href="__URL__/delimg/id/{$vo.id}/navTabId/__MODULE__" target="navTabTodo" title="你确定要删除吗？">删除图片</a>
+				<else/>
+				<input type="file" name="img" />
+				</notempty>
+			</div>
+			<div class="unit">
+				<label>状态：</label>
+				<select name="status">
+					<option <eq name="vo.status" value="1" >selected</eq> value="1">启用</option>
+					<option <eq name="vo.status" value="0" >selected</eq> value="0">禁用</option>
+				</select>
+			</div>
+			<div class="unit">
+				<label>排序值：</label>
+				<input type="text" name="sort" size="30" value="{$vo.sort}"/>
+			</div>
+			<div class="unit">
+				<label>URL重写值：</label>
+				<input type="text" name="rewrite" size="30" value="{$vo.rewrite}"/>
+			</div>
+			<div class="unit">
+				<label>使用模板：</label>
+				<input type="text" name="template" size="30" value="{$vo.template}"/>
+			</div>					
+			<div class="unit">
+				<label>内容：</label>
+				<textarea class="editor" name="content" rows="16" cols="91">{$vo.content}</textarea>
+			</div>
+		
+		</div>
+		<div class="formBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">提交</button></div></div></li>
+				<li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
+			</ul>
+		</div>
+	</form>
+	
+	</div>
+</div>

@@ -1,0 +1,26 @@
+<div class="page">
+	<div class="pageContent">
+	
+	<form method="post" action="__URL__/querysql/navTabId/__MODULE__" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone)">
+		<div class="pageFormContent" layoutH="58">
+			<div class="unit">
+				<label>
+					<b>粘贴SQL语句：</b><br>
+					1.注意符号为英文半角<br>
+					2.每条语句以;结尾并回车换行.<br>
+					3.不要有注释之类的字符.
+				</label>
+				<textarea name="sql" rows="10" cols="85" style="font-family:'Consolas'; font-size:12px; background:#000; color:#fff; padding:5px"></textarea>
+			</div>
+			
+		</div>
+		<div class="formBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">提交</button></div></div></li>
+				<li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
+			</ul>
+		</div>
+	</form>
+	
+	</div>
+</div>

@@ -1,0 +1,52 @@
+/* CSS Document */
+body { margin: 0px; padding: 0px; font-size: 12px; background:url(mainbg.gif) repeat-x top center ; color:#359AFF}
+.t_c { text-align: center; }
+.t_l { text-align: left; }
+.t_r { text-align: right; }
+.f_l { float: left; }
+.f_r { float: right; }
+.p_n { padding: 0px; }
+.p_5_l { padding-left: 5px; }
+.m_n { margin: 0px; }
+.d_b { display: block; }
+.clear { clear: both; } 
+.blank5 { margin-top: 5px; }
+.blank10 { margin-top: 10px; }
+.blank5_r { margin-right: 5px; }
+.blank10_r { margin-right: 10px; }
+.b-box { width: 950px; margin-left: auto; margin-right: auto; }
+.b-div { background:url(headbg.gif) repeat-x top center; }
+h1{ font-size: 16px; font-weight: bold; padding: 0px; margin: 0px; }
+a { color: #359AFF; text-decoration: none; }
+a:hover { color: #359AFF; text-decoration: underline; }
+.red { color: #FF0000; }
+.blue { color: #0033FF; }
+.tb-b { background: #359AFF; line-height: 24px; width: 100%; }
+	.tb-b th { background: #359AFF; color: #FFF; padding: 0px 10px; font-weight: normal; }
+	.tb-b td { background: #FFF; padding: 4px 10px; }
+.header { height: 65px; color: #FFF; }
+	.header a { color: #FFF; text-decoration: none; }
+	.header a:hover { text-decoration: underline; }
+	.header .logo { height: 65px; width: 150px; background: url(logo.png) no-repeat  bottom center; }
+	.header .userinfo { margin: 10px 0 0 0; }
+.cbody { background: #FFF; }
+	.cbody .sidebar { width: 150px; list-style: none; margin: 0px; padding: 0px; }
+	.cbody .sidebar li { list-style: none; border-bottom: 1px solid #00006F; color: #359AFF; line-height: 28px; text-indent: 25px; width: 150px;  }
+	.cbody .sidebar .home-link { color: #FFF; background: #359AFF url(install.png) no-repeat 5px 7px; line-height: 28px; text-indent: 25px; width: 150px; }
+	.cbody .sidebar .step-link { color: #FFF; background: #359AFF url(step.png) no-repeat 5px center; line-height: 28px; text-indent: 25px; width: 150px; }
+	.b-area-b { width:780px; background: #359AFF; color: #FFF; padding: 0 5px; line-height: 28px;  }
+	.b-area-w { width:778px; border: 1px solid #359AFF; padding: 5px; }
+	.cbody h4 { padding: 0 0 0 5px; margin: 5px 0; border-left: 5px solid #359AFF;  }
+	.cbody .pages { border: 1px solid #359AFF; line-height: 24px; padding: 0 5px; }
+	/* Input */
+	.input-a { border: 1px solid #999; width: 160px; color: #359AFF; background: #FFF; }
+	.input-b { width: 200px; color: #359AFF; height: 20px; }
+	.input-btn { border: none; background: #fff; color: #359AFF; margin: 5px 0px; padding: 0px 5px; line-height: 18px; cursor: pointer; }
+	.input-btn-b { border: 1px solid #359AFF; background: #359AFF; color: #FFF; margin: 5px 0 0 0; padding: 0px 5px; line-height: 18px; cursor: pointer; }
+	.input-btn-c { border: 1px solid #359AFF; background: #359AFF; color: #FFF; margin: 0; padding: 0px 5px; line-height: 14px; cursor: pointer; }
+	.b-btn { color: #FFF; background: #359AFF; border: 1px solid #359AFF; height: 24px; line-height: 24px; padding: 0 12px; cursor: pointer; }
+	.input-textarea { border: none; color: #359AFF; background: #FFF; font-size: 12px; line-height: 18px; width: 100%; height: 500px; }
+	.import-echo { border: none; color: #359AFF; background: #FFF; font-size: 12px; line-height: 18px; width: 100%; height: 200px; overflow-y: scroll; }
+	/* Search */
+	
+.footer { color: #FFF; height: 45px; line-height: 45px; color: #359AFF; }

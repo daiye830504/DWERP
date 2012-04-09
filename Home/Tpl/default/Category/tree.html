@@ -1,0 +1,13 @@
+<ul class="tree treeFolder collapse">
+	<volist name="list" id="vo">
+	<li><a class="edit" href="__URL__/edit/id/{$vo.id}" target="dialog" width="590" height="370" rel="{$vo.id}">{$vo.title}</a>
+		<notempty name="vo.sub_category">
+			<ul>
+				<volist name="vo.sub_category" id="sub_vo">
+				<li><a class="edit" href="__URL__/edit/id/{$sub_vo.id}" target="dialog" width="590" height="370" rel="{$vo.id}">{$sub_vo.title}</a></li>
+				</volist>
+			</ul>
+		</notempty>
+	</li>
+	</volist>
+</ul>

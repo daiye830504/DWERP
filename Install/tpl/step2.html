@@ -1,0 +1,98 @@
+<?php include tpl("header");?>
+<div class="cbody b-box blank10">
+	<ul class="sidebar f_l">
+		<li class="home-link"><?php echo $lang['install_step_wizard']; ?></li>
+		<li><?php echo $lang['install_step_notes']; ?></li>
+		<li><?php echo $lang['install_step_license']; ?></li>
+		<li class="step-link"><?php echo $lang['install_step_os']; ?></li>
+		<li><?php echo $lang['install_step_option']; ?></li>
+		<li><?php echo $lang['install_step_config']; ?></li>
+		<li><?php echo $lang['install_step_import']; ?></li>
+		<li><?php echo $lang['install_step_finish']; ?></li>
+	</ul>
+	<div class="b-area-w f_r">
+		<h4>DWERP <?php echo $_LCVERSION, ' ', $lang['install_wizard']; ?></h4>
+		<table border="0" cellspacing="1" class="tb-b">
+			<tr>
+				<th colspan="2"><?php echo $lang['install_env']; ?></th>
+			</tr>
+			<tr>
+				<td width="100"><?php echo $lang['php_os']; ?></td>
+				<td><?php echo PHP_OS;result(1, 1);?></td>
+			</tr>
+			<tr>
+				<td><?php echo $lang['php_version']; ?></td>
+				<td>
+					<?php
+						echo PHP_VERSION;
+						if(PHP_VERSION < '5.1.2'){
+							result(0, 1);
+							$quite = TRUE;
+						}else{
+							result(1, 1);
+						}
+					?>				
+				</td>
+			</tr>
+			<tr>
+				<td><?php echo $lang['php_extention'];?></td>
+				<td>
+					<?php
+						if(extension_loaded('mysql')){
+							echo 'mysql:'.$lang['support'];
+							result(1, 1);
+						}else{
+							echo '<span class="red">'.$lang['php_extention_unload_mysql'].'</span>';
+							result(0, 1);
+							$quite = TRUE;
+						}
+					?>
+					<br />
+				</td>
+			</tr>
+			<tr>
+				<td><?php echo $lang['mysql'];?></td>
+				<td>
+					<?php
+						if(function_exists('mysql_connect')){
+							echo $lang['support'];
+							result(1, 1);
+						}else{
+							echo '<span class="red">'.$lang['mysql_unsupport'].'</span>';
+							result(0, 1);
+							$quite = TRUE;
+						}
+					?>
+				</td>
+			</tr>
+		</table>
+		<table border="0" cellspacing="1" class="tb-b blank5">
+			<tr>
+				<th><?php echo $lang['dirmod'];?></th>
+			</tr>
+			<?php 
+				foreach($writeable as $value){
+					echo '<tr><td>'.$value.'</td></tr>';
+				}
+			?>
+			<tr>
+				<td>
+					<?php 
+						if(is_writable(DWERP_ROOT.$dwerp_config_file)){
+							echo $dwerp_config_file.result(1, 0);
+						}else{
+							echo $dwerp_config_file.result(0, 1);
+							$quite = TRUE;
+						}
+					?>
+				</td>
+			</tr>
+		</table>
+		<div align="center">
+			<input type="button" value="<?php echo $lang['install_btn_prev']; ?>" onclick="window.location.href='index.php?step=1'" class="input-btn-b" />
+			<input type="button" value="<?php echo $lang['install_btn_next']; ?>" onclick="window.location.href='index.php?step=3'" class="input-btn-b" />
+		</div>
+	</div>
+	<div class="clear"></div>
+</div>
+<?php include tpl("footer");?>

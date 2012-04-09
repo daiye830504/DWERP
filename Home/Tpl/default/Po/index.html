@@ -1,0 +1,94 @@
+<form id="pagerForm" action="__URL__" method="post">
+	<input type="hidden" name="pageNum" value="1"/>
+	<input type="hidden" name="title" value="{$_REQUEST.title}"/>
+	<input type="hidden" name="tid" value="{$_REQUEST.tid}"/>
+</form>
+
+<div class="page">
+	<div class="pageHeader">
+		<form onsubmit="return navTabSearch(this);" action="__URL__" method="post">
+		<input type="hidden" name="pageNum" value="1"/>
+		<div class="searchBar">
+			<ul class="searchContent">
+				<li>
+					<label>标题：</label>
+					<input type="text" name="title" value="{$_REQUEST.title}"/>
+				</li>
+				<li>
+					<label>分类：</label>
+					<SELECT name="tid">
+					<option value="">选择分类</option>
+					<volist name="types" id="vo">
+						<option value="{$vo.id}" <eq name="vo.id" value="$_REQUEST.tid">selected</eq>>{$vo.title}</option>
+					</volist>
+					</SELECT>
+				</li>
+			</ul>
+			<div class="subBar">
+				<ul>
+					<li><div class="buttonActive"><div class="buttonContent"><button type="submit">查询</button></div></div></li>
+				</ul>
+			</div>
+		</div>
+		</form>
+	</div>
+	
+	<div class="pageContent">
+		<div class="panelBar">
+			<ul class="toolBar">
+				<li><a class="add" href="__URL__/add" target="navTab"><span>新增</span></a></li>
+				<li><a class="edit" href="__URL__/edit/id/{sid_article}" target="navTab" warn="请选择一条记录"><span>编辑</span></a></li>
+				<li><a class="delete" href="__URL__/foreverdelete/id/{sid_article}/navTabId/__MODULE__" target="navTabTodo" title="你确定要删除吗？" warn="请选择一条记录"><span>删除</span></a></li>
+			</ul>
+		</div>
+
+		<table class="list" width="100%" layoutH="114">
+			<thead>
+			<tr>
+				<th width="60">编号</th>
+				<th>标题</th>
+				<th width="100">预览图片</th>
+				<th width="80">分类</th>
+				<th width="80">添加者</th>
+				<th width="100">添加时间</th>
+				<th width="100">更新时间</th>
+				<th width="60">状态</th>
+				<th width="60">点击次数</th>
+				<th width="60">排序值</th>
+				<th width="100">URL重写</th>
+				<th width="60">使用模板</th>
+				<th width="80">操作</th>
+			</tr>
+			</thead>
+			<tbody>
+			<volist id="vo" name="list">
+				<tr target="sid_article" rel="{$vo['id']}">
+					<td>{$vo['id']}</td>
+					<td>{$vo['title']}</td>
+					<td><notempty name="vo.img"><img src="__PUBLIC__/Upload/article/{$vo.img}" /></notempty></td>
+					<td>{$vo['tid']|getCategoryName}</td>
+					<td>{$vo['adder_id']|getUserName}</td>
+					<td>{$vo['add_time']|date="Y-m-d",###}</td>
+					<td>{$vo['update_time']|date="Y-m-d",###}</td>
+					<td>{$vo['status']|getStatus}</td>
+					<td>{$vo['apv']}</td>
+					<td>{$vo['sort']}</td>
+					<td>{$vo['rewrite']}</td>
+					<td>{$vo['template']}</td>
+					<td>{$vo['status']|showStatus=$vo['id']}</td>
+				</tr>
+			</volist>
+			</tbody>
+		</table>
+
+		<div class="panelBar">
+			<div class="pages">
+				<span>共{$totalCount}条</span>
+			</div>
+			<div class="pagination" targetType="navTab" totalCount="{$totalCount}" numPerPage="{$numPerPage}" pageNumShown="10" currentPage="{$currentPage}"></div>
+		</div>
+
+	</div>
+	
+</div>
+

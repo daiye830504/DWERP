@@ -1,0 +1,125 @@
+<?php include tpl("header");?>
+<script type="text/javascript" language="javascript">
+function check(obj)
+{
+	if (!obj.db_host.value)
+	{
+		alert('<?php echo $lang['install_mysql_host_empty'];?>');
+		obj.db_host.focus();
+		return false;
+	}
+	else if (!obj.db_username.value)
+	{
+		alert('<?php echo $lang['install_mysql_username_empty'];?>');
+		obj.db_username.focus();
+		return false;
+	}
+	else if (!obj.db_name.value)
+	{
+		alert('<?php echo $lang['install_mysql_name_empty'];?>');
+		obj.db_name.focus();
+		return false;
+	}
+	else if (obj.password.value.length < 6)
+	{
+		alert('<?php echo $lang['install_founder_password_length'];?>');
+		obj.password.focus();
+		return false;
+	}
+	else if (obj.password.value != obj.rpassword.value)
+	{
+		alert('<?php echo $lang['install_founder_rpassword_error'];?>');
+		obj.rpassword.focus();
+		return false;
+	}
+	return true;
+}
+</script>
+<div class="cbody b-box blank10">
+	<ul class="sidebar f_l">
+		<li class="home-link"><?php echo $lang['install_step_wizard']; ?></li>
+		<li><?php echo $lang['install_step_notes']; ?></li>
+		<li><?php echo $lang['install_step_license']; ?></li>
+		<li><?php echo $lang['install_step_os']; ?></li>
+		<li class="step-link"><?php echo $lang['install_step_option']; ?></li>
+		<li><?php echo $lang['install_step_config']; ?></li>
+		<li><?php echo $lang['install_step_import']; ?></li>
+		<li><?php echo $lang['install_step_finish']; ?></li>
+	</ul>
+	<div class="b-area-w f_r">
+		<h4>DWERP <?php echo $_LCVERSION, ' ', $lang['install_wizard']; ?></h4>
+		<form method="post" action="index.php?step=4" id="install" onSubmit="return check(this);">
+		<table border="0" cellspacing="1" class="tb-b">
+			<tr>
+				<th colspan="3"><?php echo $lang['install_setting']; ?></th>
+			</tr>
+			<tr>
+				<td width="100"><?php echo $lang['install_mysql_host']; ?></td>
+				<td width="250"><input name="db_host" type="text" value="localhost" class="input-b" /></td>
+				<td><?php echo $lang['install_mysql_host_intro']; ?></td>
+			</tr>
+			<tr>
+				<td width="100"><?php echo $lang['install_mysql_username']; ?></td>
+				<td width="250"><input name="db_username" type="text" value="root" class="input-b" /></td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="100"><?php echo $lang['install_mysql_password']; ?></td>
+				<td width="250"><input name="db_password" type="text" value="" class="input-b" /></td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="100"><?php echo $lang['install_mysql_name']; ?></td>
+				<td width="250"><input name="db_name" type="text" value="dwerp" class="input-b" /></td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="100"><?php echo $lang['site_url']; ?></td>
+				<td width="250"><input name="site_url" type="text" value="<?php echo "http://".$_SERVER['HTTP_HOST'].rtrim(str_replace('\\', '/', dirname(dirname($_SERVER['SCRIPT_NAME']))),'/');?>" class="input-b" /></td>
+				<td><?php echo $lang['site_url_intro']; ?></td>
+			</tr>
+			<tr>
+				<td width="100"><?php echo $lang['site_name']; ?></td>
+				<td width="250"><input name="site_name" type="text" value="" class="input-b" /></td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="100"><?php echo $lang['site_keywords']; ?></td>
+				<td width="250"><input name="site_keywords" type="text" value="" class="input-b" /></td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="100"><?php echo $lang['site_description']; ?></td>
+				<td width="250"><input name="site_description" type="text" value="" class="input-b" /></td>
+				<td>&nbsp;</td>
+			</tr>
+		</table>
+		<table border="0" cellspacing="1" class="tb-b blank5">
+			<tr>
+				<th colspan="3"><?php echo $lang['founder']; ?></th>
+			</tr>
+			<tr>
+				<td width="100"><?php echo $lang['install_founder_name']; ?></td>
+				<td width="250"><input name="founder_name" type="text" value="admin" class="input-b" readonly=true /></td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="100"><?php echo $lang['install_founder_password']; ?></td>
+				<td width="250"><input name="password" type="text" value="" class="input-b" /></td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="100"><?php echo $lang['install_founder_rpassword']; ?></td>
+				<td width="250"><input name="rpassword" type="text" value="" class="input-b" /></td>
+				<td>&nbsp;</td>
+			</tr>
+		</table>
+		<div align="center">
+			<input type="button" value="<?php echo $lang['install_btn_prev']; ?>" onclick="window.location.href='index.php?step=2'" class="input-btn-b" />
+			<input type="submit" value="<?php echo $lang['install_btn_next']; ?>" class="input-btn-b" />
+		</div>
+		</form>
+	</div>
+	<div class="clear"></div>
+</div>
+<?php include tpl("footer");?>

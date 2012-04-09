@@ -1,0 +1,39 @@
+<?php include tpl("header");?>
+<div class="cbody b-box blank10">
+	<ul class="sidebar f_l">
+		<li class="home-link"><?php echo $lang['install_step_wizard']; ?></li>
+		<li><?php echo $lang['install_step_notes']; ?></li>
+		<li class="step-link"><?php echo $lang['install_step_license']; ?></li>
+		<li><?php echo $lang['install_step_os']; ?></li>
+		<li><?php echo $lang['install_step_option']; ?></li>
+		<li><?php echo $lang['install_step_config']; ?></li>
+		<li><?php echo $lang['install_step_import']; ?></li>
+		<li><?php echo $lang['install_step_finish']; ?></li>
+	</ul>
+	<div class="b-area-w f_r">
+		<h4>DWERP <?php echo $_LCVERSION, ' ', $lang['install_wizard']; ?></h4>
+		<form method="post" name="step1" action="index.php?step=2">
+		<table border="0" cellspacing="1" class="tb-b">
+			<tr>
+				<th><?php echo $lang['install_license'];?></th>
+			</tr>
+			<tr>
+				<td>
+					<textarea class="input-textarea t_l" readonly="readonly"> 
+						<?php echo $lang['install_license_content'];?>
+					</textarea>
+				</td>
+			</tr>
+			<tr>
+				<td align="center"><input type="checkbox" name="agree" value="1" checked="checked" /><?php echo $lang['install_agree'];?></td>
+			</tr>
+		</table>
+		<div align="center">
+			<input type="button" value="<?php echo $lang['install_btn_prev']; ?>" onclick="window.location.href='index.php'" class="input-btn-b" />
+			<input type="submit" value="<?php echo $lang['install_btn_next']; ?>" class="input-btn-b" />
+		</div>
+		</form>
+	</div>
+	<div class="clear"></div>
+</div>
+<?php include tpl("footer");?>
