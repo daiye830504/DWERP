@@ -19,6 +19,7 @@ class PublicAction extends Action {
         	//读取数据库模块列表生成菜单项
 			$node    =   M("Node");
 			$id	=	$node->getField("id");
+			die($id);
 			$where['level']=2;
 			$where['status']=1;
 			$where['pid']=$id;

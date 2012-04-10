@@ -19,6 +19,7 @@ class CommonAction extends Action {
 					//跳转到认证网关
 					redirect ( PHP_FILE . C ( 'USER_AUTH_GATEWAY' ) );
 				}
+
 				// 没有权限 抛出错误
 				if (C ( 'RBAC_ERROR_PAGE' )) {
 					// 定义权限错误页面
@@ -30,8 +31,10 @@ class CommonAction extends Action {
 					// 提示错误信息
 					$this->error ( L ( '_VALID_ACCESS_' ) );
 				}
+				
 			}
 		}
+
 	}
 	
 	public function index() {

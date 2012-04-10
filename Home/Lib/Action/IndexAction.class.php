@@ -7,6 +7,7 @@ class IndexAction extends CommonAction {
 	public function index() {
 
 		if (isset ( $_SESSION [C ( 'USER_AUTH_KEY' )] )) {
+			
 			//显示菜单项
 			$menu = array ();
 			
