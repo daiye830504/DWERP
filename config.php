@@ -5,11 +5,11 @@ return array(
 	'DB_HOST'		=>	'localhost',// 数据库服务器地址
 	'DB_NAME'		=>	'dwerp',// 数据库名称
 	'DB_USER'		=>	'root',// 数据库用户名
-	'DB_PWD'		=>	'123456',// 数据库密码
+	'DB_PWD'		=>	'',// 数据库密码
 	'DB_CHARSET'	=>	'utf8',// 网站编码
 	'DB_PORT'		=>	'3306',// 数据库端口
 	'APP_DEBUG'     =>  false,// 开启调试模式
-	'DWERP_URL'     =>  'http://localhost/dwerp',// 网站地址
+	'DWERP_URL'     =>  'http://localhost/DWERP',// 网站地址
 	
 	//网站系统设置
 	'SITE_NAME'			=>  '',
