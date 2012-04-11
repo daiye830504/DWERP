@@ -3,7 +3,7 @@
 class UserAction extends CommonAction {
 	//列出用户时,对ID进行>2限制,对account进行like匹配
 	function _filter(&$map){
-		$map['role_id'] = array('egt',2);
+		$map['id'] = array('egt',2);
 	}
 	
 	// 检查帐号
@@ -25,7 +25,7 @@ class UserAction extends CommonAction {
 	// 插入数据
 	public function insert() {
 		// 创建数据对象
-		$User	 =	 D("User");
+		$User = D("User");
 		if(!$User->create()) {
 			$this->error($User->getError());
 		}else{

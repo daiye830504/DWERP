@@ -22,8 +22,11 @@ class RoleAction extends CommonAction {
 		$groupId	=	$_POST['groupId'];
 		$group    =   D('Role');
 		$group->delGroupApp($groupId);
+		//echo $id;
+		//echo  $groupId;
 		$result = $group->setGroupApps($groupId,$id);
-
+		
+        //echo $id;
 		if($result===false) {
 			$this->error('项目授权失败！');
 		}else {
@@ -124,6 +127,9 @@ class RoleAction extends CommonAction {
     {
         $groupId =  $_GET['groupId'];
         $appId  = $_GET['appId'];
+        
+        //echo $groupId;
+        //echo $appId;
 
 		$group   =  D("Role");
         //读取系统组列表
@@ -217,7 +223,7 @@ class RoleAction extends CommonAction {
         $groupId =  $_GET['groupId'];
         $appId  = $_GET['appId'];
         $moduleId  = $_GET['moduleId'];
-
+		
 		$group   =  D("Role");
         //读取系统组列表
         $grouplist=$group->field('id,name')->findAll();
@@ -233,6 +239,7 @@ class RoleAction extends CommonAction {
 			foreach ($list as $vo){
 				$appList[$vo['id']]	=	$vo['title'];
 			}
+			
             $this->assign("appList",$appList);
         }
         if(!empty($appId)) {
@@ -322,15 +329,17 @@ class RoleAction extends CommonAction {
     {
         //读取系统的用户列表
         $user    =   D("User");
-		$list2=$user->field('id,account,nickname')->findAll();
+		$list2=$user->field('id,user_id,user_name')->findAll();
 		//echo $user->getlastsql();
 		//dump(	$user);
+		//echo $list2;
 		foreach ($list2 as $vo){
-			$userList[$vo['id']]	=	$vo['account'].' '.$vo['nickname'];
+			$userList[$vo['id']]	=	$vo['user_id'].' '.$vo['user_name'];
 		}
 
 		$group    =   D("Role");
         $list=$group->field('id,name')->findAll();
+    
 		foreach ($list as $vo){
 			$groupList[$vo['id']]	=	$vo['name'];
 		}
@@ -342,6 +351,7 @@ class RoleAction extends CommonAction {
 		if(!empty($groupId)) {
 			$this->assign("selectGroupId",$groupId);
 			//获取当前组的用户列表
+		
             $list	=	$group->getGroupUserList($groupId);
 			foreach ($list as $vo){
 				$groupUserList[$vo['id']]	=	$vo['id'];
@@ -349,7 +359,9 @@ class RoleAction extends CommonAction {
 
 		}
 		$this->assign('groupUserList',$groupUserList);
+		//dump($groupUserList);
         $this->assign('userList',$userList);
+        
         $this->display();
 
         return;
@@ -370,6 +382,7 @@ class RoleAction extends CommonAction {
         $this->assign('list',$list);
 
 	}
+	
 	
     public function select()
     {

@@ -17,7 +17,7 @@ class RoleModel extends CommonModel {
 		}
 		$id = implode(',',$appIdList);
 		$where = 'a.id ='.$groupId.' AND b.id in('.$id.')';
-		$result = $this->db->execute('INSERT INTO '.$this->tablePrefix.'access (role_id,node_id,pid,level) SELECT a.id, b.id,b.pid,b.level FROM '.$this->tablePrefix.'role a, '.$this->tablePrefix.'node b WHERE '.$where);
+		$result = $this->db->execute('INSERT INTO access (role_id,node_id,pid,level) SELECT a.id, b.id,b.pid,b.level FROM role a, node b WHERE '.$where);
 		if($result===false) {
 			return false;
 		}else {
@@ -33,8 +33,8 @@ class RoleModel extends CommonModel {
 
 	function delGroupApp($groupId)
 	{
-		$table = $this->tablePrefix.'access';
-		$result = $this->db->execute('delete from '.$table.' where level=1 and role_id='.$groupId);
+		//$table = $this->'access';
+		$result = $this->db->execute('delete from access where level=1 and role_id='.$groupId);
 		if($result===false) {
 			return false;
 		}else {
@@ -116,7 +116,7 @@ class RoleModel extends CommonModel {
 	function getGroupUserList($groupId)
 	{
 		$table = $this->tablePrefix.'role_user';
-		$rs = $this->db->query('select b.id,b.nickname,b.email from '.$table.' as a ,'.$this->tablePrefix.'user as b where a.user_id=b.id and  a.role_id='.$groupId.' ');
+		$rs = $this->db->query('select b.id,b.user_name,b.email from '.$table.' as a ,'.$this->tablePrefix.'user as b where a.user_id=b.id and  a.role_id='.$groupId.' ');
 		return $rs;
 	}
 

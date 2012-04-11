@@ -10,6 +10,7 @@ function selectApp_action(form$){
 	var groupId = $form.find(":input[name=groupId]").val();
 	var appId = $form.find(":input[name=appId]").val();
 	var url = "__URL__/action/groupId/"+ groupId +"/appId/" + appId;
+	alert(url);
 	$("#moduleSelectBox", $.pdialog.getCurrent()).loadUrl(url);
 }
 function selectModule_action(form$){

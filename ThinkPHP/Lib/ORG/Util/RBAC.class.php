@@ -166,18 +166,21 @@ class RBAC extends Think
         if(RBAC::checkAccess()) {
             //存在认证识别号，则进行进一步的访问决策
             $accessGuid   =   md5($appName.MODULE_NAME.ACTION_NAME);
-            if(empty($_SESSION[C('ADMIN_AUTH_KEY')])) {
+            if(empty($_SESSION[C('ADMIN_AUTH_KEY')])) {            	
                 if(C('USER_AUTH_TYPE')==2) {
                     //加强验证和即时验证模式 更加安全 后台权限修改可以即时生效
                     //通过数据库进行访问检查
                     $accessList = RBAC::getAccessList($_SESSION[C('USER_AUTH_KEY')]);
                 }else {
+                	
                     // 如果是管理员或者当前操作已经认证过，无需再次认证
                     if( $_SESSION[$accessGuid]) {
                         return true;
                     }
+                   
                     //登录验证模式，比较登录后保存的权限访问列表
                     $accessList = $_SESSION['_ACCESS_LIST'];
+                     //dump($accessList);
                 }
                 //判断是否为组件化模式，如果是，验证其全模块名
                 $module = defined('P_MODULE_NAME')?  P_MODULE_NAME   :   MODULE_NAME;
@@ -207,6 +210,7 @@ class RBAC extends Think
      */
     static public function getAccessList($authId)
     {
+    	
         // Db方式权限数据
         $db     =   Db::getInstance();
         $table = array('role'=>C('RBAC_ROLE_TABLE'),'user'=>C('RBAC_USER_TABLE'),'access'=>C('RBAC_ACCESS_TABLE'),'node'=>C('RBAC_NODE_TABLE'));
@@ -216,6 +220,7 @@ class RBAC extends Think
                     $table['access']." as access ,".
                     $table['node']." as node ".
                     "where user.user_id='{$authId}' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=1 and node.status=1";
+
         $apps =   $db->query($sql);
         $access =  array();
         foreach($apps as $key=>$app) {
