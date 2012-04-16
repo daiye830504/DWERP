@@ -89,8 +89,9 @@ class RBAC extends Think
         if(null===$authId)   $authId = $_SESSION[C('USER_AUTH_KEY')];
         // 如果使用普通权限模式，保存当前用户的访问权限列表
         // 对管理员开发所有权限
-        if(C('USER_AUTH_TYPE') !=2 && !$_SESSION[C('ADMIN_AUTH_KEY')] )
+        if(C('USER_AUTH_TYPE') !=2 && !$_SESSION[C('ADMIN_AUTH_KEY')] ){
             $_SESSION['_ACCESS_LIST']	=	RBAC::getAccessList($authId);
+        }
         return ;
     }
 
@@ -226,6 +227,7 @@ class RBAC extends Think
         foreach($apps as $key=>$app) {
             $appId	=	$app['id'];
             $appName	 =	 $app['name'];
+           // dump("appid==".$appId."  appName==".$appName);
             // 读取项目的模块权限
             $access[strtoupper($appName)]   =  array();
             $sql    =   "select node.id,node.name from ".
@@ -275,6 +277,7 @@ class RBAC extends Think
                 $access[strtoupper($appName)][strtoupper($moduleName)]   =  array_change_key_case($action,CASE_UPPER);
             }
         }
+       // dump($access);
         return $access;
     }
 

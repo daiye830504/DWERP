@@ -27,7 +27,7 @@ $admin_config	= array(
 	'RBAC_USER_TABLE'			=>'role_user',
 	'RBAC_ACCESS_TABLE' 		=>'access',
 	'RBAC_NODE_TABLE'			=>'node',
-	'SHOW_PAGE_TRACE'=>1//显示调试信息
+	//'SHOW_PAGE_TRACE'=>1//显示调试信息
 
 );
 return array_merge($config,$admin_config);

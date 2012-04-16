@@ -31,10 +31,10 @@
 		<div class="panelBar">
 			<ul class="toolBar">
 				<li><a class="add" href="__URL__/add" target="dialog" width="590" height="340" mask="true"><span>新增</span></a></li>
-				<li><a class="edit" href="__URL__/edit/user_id/{sid_user}" target="dialog" width="590"  mask="true" warn="请选择一条记录"><span>编辑</span></a></li>
-				<li><a class="delete" href="__URL__/foreverdelete/user_id/{sid_user}/navTabId/__MODULE__" target="navTabTodo" title="你确定要删除吗？" warn="请选择一条记录"><span>删除</span></a></li>
+				<li><a class="edit" href="__URL__/edit/id/{sid_user}" target="dialog" width="590"  mask="true" warn="请选择一条记录"><span>编辑</span></a></li>
+				<li><a class="delete" href="__URL__/foreverdelete/id/{sid_user}/navTabId/__MODULE__" target="navTabTodo" title="你确定要删除吗？" warn="请选择一条记录"><span>删除</span></a></li>
 				<li class="line">line</li>
-				<li><a class="icon" href="__URL__/password/user_id/{sid_user}" target="dialog" mask="true" warn="请选择一条记录"><span>修改密码</span></a></li>
+				<li><a class="icon" href="__URL__/password/id/{sid_user}" target="dialog" mask="true" warn="请选择一条记录"><span>修改密码</span></a></li>
 			</ul>
 		</div>
 
@@ -43,17 +43,19 @@
 			<tr>
 				<th>用户登录名</th>
 				<th>用户姓名</th>
-				<th>角色</th>
 				<th>状态</th>
+				<th>操作</th>
 			</tr>
 			</thead>
-			<tbody>
+			<tbody>			
 			<volist id="vo" name="list">
-				<tr target="sid_user" rel="{$vo['user_id']}">
+				<tr target="sid_user" rel="{$vo['id']}">
 					<td>{$vo['user_id']}</td>
 					<td>{$vo['user_name']}</td>
-					<td>{$vo['role_id']|showRole}</td>
-					<td>{$vo['status']|showStatus=$vo['user_id']}</td>
+					<td><if condition="$vo['status'] eq 1"> <img alt="" src="__PUBLIC__/Images/ok.png">
+					<else /> <img alt="" src="__PUBLIC__/Images/locked.gif">
+					</if></td>
+					<td>{$vo['status']|showStatus=$vo['id']}</td>
 				</tr>
 			</volist>
 			</tbody>

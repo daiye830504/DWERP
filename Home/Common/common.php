@@ -169,22 +169,22 @@ function getCardStatus($status) {
 
 }
 
-function showStatus($status, $user_id, $callback="") {
-	switch ($status) {
-		case 0 :
-			$info = '<a href="__URL__/resume/user_id/' . $user_id . '/navTabId/__MODULE__" target="navTabTodo" callback="'.$callback.'">恢复</a>';
-			break;
-		case 2 :
-			$info = '<a href="__URL__/pass/user_id/' . $user_id . '/navTabId/__MODULE__" target="navTabTodo" callback="'.$callback.'">批准</a>';
-			break;
-		case 1 :
-			$info = '<a href="__URL__/forbid/user_id/' . $user_id . '/navTabId/__MODULE__" target="navTabTodo" callback="'.$callback.'">禁用</a>';
-			break;
-		case - 1 :
-			$info = '<a href="__URL__/recycle/user_id/' . $user_id . '/navTabId/__MODULE__" target="navTabTodo" callback="'.$callback.'">还原</a>';
-			break;
-	}
-	return $info;
+function showStatus($status, $id, $callback="") {
+    switch ($status) {
+        case 0 :
+            $info = '<a href="__URL__/resume/id/' . $id . '/navTabId/__MODULE__" target="navTabTodo" callback="' . $callback . '">恢复</a>';
+            break;
+        case 2 :
+            $info = '<a href="__URL__/pass/id/' . $id . '/navTabId/__MODULE__" target="navTabTodo" callback="' . $callback . '">批准</a>';
+            break;
+        case 1 :
+            $info = '<a href="__URL__/forbid/id/' . $id . '/navTabId/__MODULE__" target="navTabTodo" callback="' . $callback . '">禁用</a>';
+            break;
+        case - 1 :
+            $info = '<a href="__URL__/recycle/id/' . $id . '/navTabId/__MODULE__" target="navTabTodo" callback="' . $callback . '">还原</a>';
+            break;
+    }
+    return $info;
 }
 
 function showRole($role_id) {

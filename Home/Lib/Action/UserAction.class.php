@@ -41,14 +41,14 @@ class UserAction extends CommonAction {
     //重置密码
     public function resetPwd()
     {
-    	$user_id  =  $_POST['user_id'];
+    	$user_id  =  $_POST['id'];
         $user_pwd = $_POST['user_pwd'];
         if(''== trim($user_pwd)) {
         	$this->error('密码不能为空！');
         }
         $User = M('User');
 		$User->user_pwd	=	md5($user_pwd);
-		$User->user_id =	$user_id;
+		$User->id =	$user_id;
 		$result	=	$User->save();
         if(false !== $result) {
             $this->success("密码修改为$user_pwd");
@@ -56,5 +56,8 @@ class UserAction extends CommonAction {
         	$this->error('重置密码失败！');
         }
     }   
+    
+    
+ 
  
 }

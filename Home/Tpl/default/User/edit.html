@@ -4,7 +4,7 @@
 
 	<form method="post" action="__URL__/update/navTabId/__MODULE__" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone)">
 		<input type="hidden" name="user_id" value="<?php echo $_SESSION[C('USER_AUTH_KEY')] ?>"/>
-		<input type="hidden" name="user_id" value="{$vo.user_id}" />
+		<input type="hidden" name="id" value="{$vo.id}" />
 		<div class="pageFormContent" layoutH="58">
 	
 		<div class="unit">
@@ -14,14 +14,6 @@
 		<div class="unit">
 			<label>用户姓名：</label>
 			<input type="text" class="required" name="user_name" value="{$vo.user_name}">
-		</div>
-		<div class="unit">
-			<label>角色：</label>
-			<select class="small bLeft" name="role_id">
-				<option <eq name="vo.role_id" value="2" >selected</eq> value="2">老板</option>
-				<option <eq name="vo.role_id" value="3" >selected</eq> value="3">业务员</option>
-				<option <eq name="vo.role_id" value="4" >selected</eq> value="4">工人</option>
-			</select>
 		</div>
 		<div class="unit">
 			<label>状态：</label>

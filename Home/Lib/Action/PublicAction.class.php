@@ -117,7 +117,7 @@ class PublicAction extends Action {
             if($authInfo['user_pwd'] != md5($_POST['user_pwd'])) {
             	$this->error('密码错误！');
             }
-            $_SESSION[C('USER_AUTH_KEY')]	=	$authInfo['user_id'];
+            $_SESSION[C('USER_AUTH_KEY')]	=	$authInfo['id'];
             $_SESSION['loginUserName']		=	$authInfo['user_name'];
             if($authInfo['user_id']=='admin') {
             	$_SESSION['administrator']		=	true;
